@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,6 +13,10 @@ from app.api.v1.router import router
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
+    os.makedirs("data/models", exist_ok=True)
+    os.makedirs("data/evidence", exist_ok=True)
+    os.makedirs("data/exports", exist_ok=True)
+    os.makedirs("data/ingested", exist_ok=True)
     Base.metadata.create_all(bind=engine)
     run_migrations(engine)
     db = SessionLocal()
