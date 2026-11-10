@@ -1,5 +1,6 @@
 {
   "name": "aiqms-web",
+  "description": "AiDocMaker Web Application",
   "private": true,
   "version": "0.1.0",
   "type": "module",
